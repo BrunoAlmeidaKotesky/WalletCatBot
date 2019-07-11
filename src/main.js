@@ -1,7 +1,27 @@
 const botSettings = require("./botconfig.json");
+const token = require("./token.json");
 const Discord = require('discord.js');
+const fs = require('fs');
 const bot = new Discord.Client({disableEveryone: true});
-const prefix = botSettings.prefix;
+
+//const prefix = botSettings.prefix;
+bot.commands = new Discord.Collection();
+
+fs.readdir("./commands/", (err, files) => {
+
+  if(err) console.log(err);
+  let jsfile = files.filter(f => f.split(".").pop() === "js")
+  if(jsfile.length <= 0){
+    console.log("Couldn't find commands.");
+    return;
+  }
+
+  jsfile.forEach((f, i) =>{
+    let props = require(`./commands/${f}`);
+    console.log(`${f} loaded!`);
+    bot.commands.set(props.help.name, props);
+  });
+});
 
 bot.on("ready", async () => {
     console.log(`Bot pronto! ${bot.user.username}`);
@@ -13,29 +33,25 @@ bot.on("ready", async () => {
 
 });
 
-bot.on("message", async message => {if(message.author.bot) return;
+bot.on("message", async message => {
+    if(message.author.bot) return;
     if(message.channel.type ==="dm") return;
+
+    let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+    if(!prefixes[message.guild.id]){
+        prefixes[message.guild.id] = {
+        prefixes: botSettings.prefix};
+    }
+    let prefix = prefixes[message.guild.id].prefixes;
+
     let messageArray = message.content.split(" ");
     let command = messageArray[0];
-    args = messageArray.slice(1);
+    let args = messageArray.slice(1);
+    let cmd = bot.commands.get(command.slice(prefix.length));
+    if(cmd) cmd.run(bot, message, args);
 
-    if(!command.startsWith(prefix)) return;
-
-    if(command === `${prefix}uinfo`){
-        let container = new Discord.RichEmbed()
-        .setAuthor(message.author.username)
-        .setDescription("Informações sobre o usuário.")
-        .setColor("#fff")
-        .addField("Nome de usuário: ", `${message.author.username}#${message.author.discriminator}`)
-        .addField("ID: ", `${message.author.id}`)
-        .addField("Criado em: ", `${message.author.createdAt}`)
-        .setImage(message.author.avatarURL);
-
-        message.channel.sendEmbed(container);
-        return;
-    }
-
+    
 });
 
-bot.login(botSettings.token);
+bot.login(token.token);
 
