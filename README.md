@@ -1,0 +1,2 @@
+# WalletCatBot
+bot discord
