@@ -21,5 +21,9 @@ module.exports.run = async (bot,message, args) =>{
 }
 
 module.exports.help = {
-    name:"unmute"
+    name:"unmute",
+    noaliases: "No aliases",
+    aliases: [],
+    description: "Cancela um mute de um usuário",
+    accessableby: "Moderadores",
 }

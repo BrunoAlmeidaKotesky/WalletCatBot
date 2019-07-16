@@ -55,5 +55,9 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help= {
-    name: "mute"
+    name: "mute",
+    noaliases: "No aliases",
+    aliases: [],
+    description: "Impede o usuário temporiamente de reagir ou enviar mensagens",
+    accessableby: "Moderadores",
 }

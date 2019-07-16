@@ -28,5 +28,10 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-  name: "prefix"
+  name: "prefix",
+  noaliases: "No aliases",
+  aliases: [],
+  accessableby: "Administrators",
+  description: "Altera o prefixo padrão do bot para um novo."
+
 }

@@ -6,6 +6,7 @@ const bot = new Discord.Client({disableEveryone: true});
 
 //const prefix = botSettings.prefix;
 bot.commands = new Discord.Collection();
+bot.aliases = new Discord.Collection();
 bot.mutes = require("./mutes.json");
 
 fs.readdir("./commands/", (err, files) => {
@@ -21,6 +22,10 @@ fs.readdir("./commands/", (err, files) => {
     let props = require(`./commands/${f}`);
     console.log(`${f} loaded!`);
     bot.commands.set(props.help.name, props);
+    props.help.aliases.forEach(aliases =>{
+      bot.aliases.set(aliases, props.help.name);
+    });
+
     
   });
 });
@@ -38,7 +43,9 @@ fs.readdir("./commands/markdown/", (err, files) => {
     let props = require(`./commands/markdown/${f}`);
     console.log(`${f} loaded!`);
     bot.commands.set(props.help.name, props);
-    
+    props.help.aliases.forEach(aliases =>{
+      bot.aliases.set(aliases, props.help.name);
+    });
   });
 });
 
@@ -65,7 +72,7 @@ bot.on("message", async message => {
     let messageArray = message.content.split(" ");
     let command = messageArray[0];
     let args = messageArray.slice(1);
-    let cmd = bot.commands.get(command.slice(prefix.length));
+    let cmd = bot.commands.get(command.slice(prefix.length)) || bot.commands.get(bot.aliases.get(command.slice(prefix.length)));
     if(cmd) cmd.run(bot, message, args);
 
     

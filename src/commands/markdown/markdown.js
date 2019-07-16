@@ -15,12 +15,17 @@ module.exports.run = async(bot, message, args) => {
     if(!args[0] || args[0 == "help"]) return message.reply(`Exemplo: ${prefix}send <Seu texto>`);
 
 
-    let remove =  message.content.replace(`${prefix}send`, `${message.author.username} disse:`)
+    let remove =  message.content.replace(`${prefix}code`, `${message.author.username} disse:`)
    
     message.channel.send(`${code}${remove}${code}`);
 
 }
 
 module.exports.help = {
-    name: "send"
+    name: "code",
+    noaliases: "No aliases",
+    aliases: [],
+    description: "Transforma a sua mensagem enviada para um bloco de código.",
+    accessableby: "Membros",
+
   }
