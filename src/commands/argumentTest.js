@@ -1,4 +1,4 @@
-
+/* 
 //Ok, so using your sample command as an example, let's say someone enters this, and you want to know how to handle it:
 
 //>addplayer jimmybenoit, Example Crew, Captain, Example Longsword, Example Fruit, Gainer, Cook, Other Information Goes here
@@ -33,3 +33,16 @@ if (command === "addplayer") {
 
 //The final ...other] is used to catch any remaining arguments - so if your text 'Other information Goes here' had commas, all of those extra arguments would get stored (as an array) in the other variable. If you want to put them all back together, you can use .join(',') to separate them by comma.
 
+ */
+const fs = module.require('fs');
+const Discord = module.require('discord.js');
+const ms = require('ms');
+module.exports.run = async (bot, message, args) => {
+    let [name, crew, rank, weapon, df, talent, profession, ...other] = args;
+
+    
+
+}
+module.exports.help={
+      
+}

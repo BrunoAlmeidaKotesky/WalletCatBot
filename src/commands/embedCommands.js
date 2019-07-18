@@ -23,3 +23,5 @@ module.exports.help = {
     description: "Mostra as informações sobre o seu usuário.",
     accessableby: "Membros",
   }
+
+  

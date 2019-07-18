@@ -1,6 +1,6 @@
 {
     "Print to console": {
-        "prefix": "ds",
+        "prefix": "dss",
            "body": [
    "const fs = module.require('fs');",
    "const Discord = module.require('discord.js');",
@@ -10,12 +10,12 @@
        "      ",
        "}",
 
-   "module.exports.help={",           
-   "name: "," ",
-   "noaliases:", " ",
-   "aliases: []",
-   "description:" ," ",
-   "accessableby:", " ",  
+   "module.exports.help = {",           
+   "name: \"\",",
+   "noaliases: \"\",",
+   "aliases: [],",
+   "description: \"\",",
+   "accessableby:\"\",", 
    "}"
 
    ],

@@ -61,3 +61,4 @@ module.exports.help= {
     description: "Impede o usuário temporiamente de reagir ou enviar mensagens",
     accessableby: "Moderadores",
 }
+
