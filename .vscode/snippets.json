@@ -11,7 +11,11 @@
        "}",
 
    "module.exports.help={",           
-   "      ",
+   "name: "," ",
+   "noaliases:", " ",
+   "aliases: []",
+   "description:" ," ",
+   "accessableby:", " ",  
    "}"
 
    ],
