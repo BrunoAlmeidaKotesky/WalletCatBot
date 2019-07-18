@@ -1,0 +1,20 @@
+{
+    "Print to console": {
+        "prefix": "ds",
+           "body": [
+   "const fs = module.require('fs');",
+   "const Discord = module.require('discord.js');",
+   "const ms = require('ms');",
+
+   "module.exports.run = async (bot, message, args) => {",           
+       "      ",
+       "}",
+
+   "module.exports.help={",           
+   "      ",
+   "}"
+
+   ],
+    "description": "Log output to console"
+   }
+}
