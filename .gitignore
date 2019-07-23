@@ -1,0 +1,3 @@
+git update-index --assume-unchanged <src/token.json>
+git update-index --assume-unchanged <node_modules>
+git update-index --assume-unchanged <package-lock.json>

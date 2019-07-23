@@ -5,6 +5,7 @@ module.exports.run = async (bot, message, args) => {
     let target = message.mentions.members.first() || message.guild.members.get(args[0]);
     if (!target) return message.channel.send("Por favor informe qual usuário.");
     let reason = args.slice(1).join(" ");
+    
     if (!reason) return message.channel.send(`Por favor informe qual o motivo de estar reportando **${target.user.username}**.`).then(m => m.delete(70000));
 
     let reportChannel = "reports";

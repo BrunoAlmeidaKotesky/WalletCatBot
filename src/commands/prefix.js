@@ -24,13 +24,13 @@ module.exports.run = async (bot, message, args) => {
   .setDescription(`Alterado para: ${args[0]}`);
 
   message.channel.sendEmbed(sEmbed);
-  message.author.send(`O seu novo prefixo é: ${args[0]}, lembre-se que o padrão é: .gc`)
+  message.author.send(`O seu novo prefixo é: ${args[0]}, lembre-se que o padrão é: +`)
 }
 
 module.exports.help = {
   name: "prefix",
-  noaliases: "No aliases",
   aliases: [],
+  noaliases: "no aliases",
   accessableby: "Administrators",
   description: "Altera o prefixo padrão do bot para um novo."
 
