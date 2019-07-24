@@ -2,10 +2,9 @@ const fs = module.require('fs');
 const Discord = module.require('discord.js');
 const ms = require('ms');
 const axios = require('axios');
-
 module.exports.run = async (bot, message, args) => {
     let [champArt, skin, location] = args;
-    const capitalize = (s) => {
+     const capitalize = (s) => {
         if (typeof s !== 'string') return ''
         return s.charAt(0).toUpperCase() + s.slice(1)
       }
