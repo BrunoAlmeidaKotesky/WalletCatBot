@@ -1,0 +1,12 @@
+{
+
+	"Print to console": {
+		"scope": "javascript,typescript",
+	"prefix": "barra",
+	"body": [
+		"\\ ||",
+
+	],
+ 	"description": "Log output to console"
+ }
+}

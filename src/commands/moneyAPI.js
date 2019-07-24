@@ -41,7 +41,7 @@ module.exports.run = async (bot, message, args) => {
                 let sEmbed = new Discord.RichEmbed()
                     .setColor("#00FFFF")
                     .setFooter(`Última atualização em (${atualizadoUSD}).`)
-                    .setDescription(`**A cotação média do dólar p/real hoje está entre: R$: ${lowUSD} / ${highUSD}**`)
+                    .setDescription(`💰 **A cotação média do dólar p/real hoje está entre: R$: ${lowUSD} / ${highUSD}**`)
                 message.channel.sendEmbed(sEmbed);
                 console.log(coinType);
             }
@@ -51,7 +51,7 @@ module.exports.run = async (bot, message, args) => {
                 let sEmbed = new Discord.RichEmbed()
                     .setColor("#00FFFF")
                     .setFooter(`Última atualização em (${atualizadoCAD}).`)
-                    .setDescription(`**A cotação média do dólar canadanse p/real hoje está entre: R$: ${lowCAD} / ${highCAD}**`)
+                    .setDescription(`💰 **A cotação média do dólar canadanse p/real hoje está entre: R$: ${lowCAD} / ${highCAD}**`)
                 message.channel.sendEmbed(sEmbed);
                 console.log(coinType);
             }
