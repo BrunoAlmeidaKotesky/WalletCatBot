@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Bruno-Kotesky/WalletCatDSBot#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "discord-anti-spam": "^2.0.0",
     "discord.js": "^11.5.1",
     "eslint": "^6.1.0",
     "mathjs": "^6.0.3",

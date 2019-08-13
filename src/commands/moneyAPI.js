@@ -63,7 +63,7 @@ module.exports.run = async (bot, message, args) => {
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoUSD}).`)
                         .setDescription(`💰 **A cotação média do Dólar p/real hoje está entre: R$: ${lowUSD} / ${highUSD}**`)
-                    message.channel.sendEmbed(sEmbed1);
+                    message.channel.sendEmbed(sEmbed1).then(m => m.delete(6000));
                     
                     break;
                 case "CAD":
@@ -72,7 +72,7 @@ module.exports.run = async (bot, message, args) => {
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoCAD}).`)
                         .setDescription(`💰 **A cotação média do Dólar canadanse p/real hoje está entre: R$: ${lowCAD} / ${highCAD}**`)
-                    message.channel.sendEmbed(sEmbed2);
+                    message.channel.sendEmbed(sEmbed2).then(m => m.delete(6000));
                     
                     break;
                 case "EUR":
@@ -81,7 +81,7 @@ module.exports.run = async (bot, message, args) => {
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoEUR}).`)
                         .setDescription(`💰 **A cotação média do Euro p/real hoje está entre: R$: ${lowEUR} / ${highEUR}**`)
-                    message.channel.sendEmbed(sEmbed3);
+                    message.channel.sendEmbed(sEmbed3).then(m => m.delete(6000));
                     
                     break;
                 case "GBP":
@@ -90,7 +90,7 @@ module.exports.run = async (bot, message, args) => {
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoGBP}).`)
                         .setDescription(`💰 **A cotação média da Libra Esterlina p/real hoje está entre: R$: ${lowGBP} / ${highGBP}**`)
-                    message.channel.sendEmbed(sEmbed4);
+                    message.channel.sendEmbed(sEmbed4).then(m => m.delete(6000));
                     
                     break;
                 case "ARS":
@@ -99,16 +99,17 @@ module.exports.run = async (bot, message, args) => {
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoARS}).`)
                         .setDescription(`💰 **A cotação média do Peso Argentino p/real hoje está entre: R$: ${lowARS} / ${highARS}**`)
-                    message.channel.sendEmbed(sEmbed5);
+                    message.channel.sendEmbed(sEmbed5).then(m => m.delete(6000));
                     
                     break;
                 case "BTC":
+                case "BIT":
                     message.delete();
                     let sEmbed6 = new Discord.RichEmbed()
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoBTC}).`)
                         .setDescription(`💰 **A cotação média do Bitcoin p/real hoje está entre: R$: ${lowBTC} / ${highBTC}**`)
-                    message.channel.sendEmbed(sEmbed6);
+                    message.channel.sendEmbed(sEmbed6).then(m => m.delete(6000));
                     
                     break;
                 case "LTC":
@@ -117,7 +118,7 @@ module.exports.run = async (bot, message, args) => {
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoLTC}).`)
                         .setDescription(`💰 **A cotação média do Litecoin p/real hoje está entre: R$: ${lowLTC} / ${highLTC}**`)
-                    message.channel.sendEmbed(sEmbed7);
+                    message.channel.sendEmbed(sEmbed7).then(m => m.delete(6000));
                     
                     break;
                 case "CHF":
@@ -126,7 +127,7 @@ module.exports.run = async (bot, message, args) => {
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoCHF}).`)
                         .setDescription(`💰 **A cotação média do Franco Suiço p/real hoje está entre: R$: ${lowCHF} / ${highCHF}**`)
-                    message.channel.sendEmbed(sEmbed8);
+                    message.channel.sendEmbed(sEmbed8).then(m => m.delete(6000));
                     
                     break;
                 case "JPY":
@@ -135,16 +136,16 @@ module.exports.run = async (bot, message, args) => {
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoJPY}).`)
                         .setDescription(`💰 **A cotação média do Iene Japonês p/real hoje está entre: R$: ${lowJPY} / ${highJPY}**`)
-                    message.channel.sendEmbed(sEmbed9);
+                    message.channel.sendEmbed(sEmbed9).then(m => m.delete(6000));
                     
                     break;
                 case "AUD":
-                    message.delete();
+                   message.delete();
                     let sEmbed10 = new Discord.RichEmbed()
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoAUD}).`)
                         .setDescription(`💰 **A cotação média do Dólar Australiano p/real hoje está entre: R$: ${lowAUD} / ${highAUD}**`)
-                    message.channel.sendEmbed(sEmbed10);
+                    message.channel.sendEmbed(sEmbed10).then(m => m.delete(6000));
                     
                     break;
                 case "CNY":
@@ -153,7 +154,7 @@ module.exports.run = async (bot, message, args) => {
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoCNY}).`)
                         .setDescription(`💰 **A cotação média do Yuan Chinês p/real hoje está entre: R$: ${lowCNY} / ${highCNY}**`)
-                    message.channel.sendEmbed(sEmbed11);
+                    message.channel.sendEmbed(sEmbed11).then(m => m.delete(6000));
                     
                     break;
                 case "ILS":
@@ -162,7 +163,7 @@ module.exports.run = async (bot, message, args) => {
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoILS}).`)
                         .setDescription(`💰 **A cotação média do Novo Shekel Israelense p/real hoje está entre: R$: ${lowILS} / ${highILS}**`)
-                    message.channel.sendEmbed(sEmbed12);
+                    message.channel.sendEmbed(sEmbed12).then(m => m.delete(6000));
                     
                     break;
                 case "ETH":
@@ -171,7 +172,7 @@ module.exports.run = async (bot, message, args) => {
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoETH}).`)
                         .setDescription(`💰 **A cotação média do Ethereum p/real hoje está entre: R$: ${lowETH} / ${highETH}**`)
-                    message.channel.sendEmbed(sEmbed13);
+                    message.channel.sendEmbed(sEmbed13).then(m => m.delete(6000));
                     
                     break;
                 case "XRP":
@@ -180,7 +181,7 @@ module.exports.run = async (bot, message, args) => {
                         .setColor("#00FFFF")
                         .setFooter(`Última atualização em (${atualizadoXRP}).`)
                         .setDescription(`💰 **A cotação média do Ripple p/real hoje está entre: R$: ${lowXRP} / ${highXRP}**`)
-                    message.channel.sendEmbed(sEmbed14);
+                    message.channel.sendEmbed(sEmbed14).then(m => m.delete(6000));
                     
                     break;
                 
@@ -201,6 +202,6 @@ module.exports.help = {
     name: "$",
     aliases: ["money"],
     accessableby: "Members",
-    description: "Mostra a cotação atual do dólar."
+    description: "Mostra a cotação atual de algumas moedas."
 
 }
