@@ -1,0 +1,13 @@
+{
+    "ignore": [
+      "node_modules"
+    ],
+    "watch": [
+      "src",
+      "yarn.lock"
+    ],
+    "execMap": {
+      "ts": "node --require ts-node/register src/main.ts"
+    },
+    "ext": "js,json,ts"  
+  }

@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
     
     let config = {
         headers: {
-            "X-Riot-Token": "RGAPI-00e2ff30-d02d-4abe-80f9-9569dc2f2b2c",
+            "X-Riot-Token": "RGAPI-e4d70155-fc4c-4ef4-9200-ffc041e86cc2",
         }
     }
     let [summonerNameArg, champion] = args;
