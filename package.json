@@ -2,10 +2,10 @@
   "name": "walletcat",
   "version": "1.0.0",
   "description": "indev",
-  "main": "main.ts",
+  "main": "index.ts",
   "scripts": {
-    "dev": "nodemon --watch src/main.ts --exec \"ts-node src/main.ts\" -e ts",
-    "dev:debug": "nodemon --inspect src/main.ts",
+    "dev": "nodemon --watch src/index.ts --exec \"ts-node src/index.ts\" -e ts",
+    "dev:debug": "nodemon --inspect src/index.ts",
     "build": "tsc -p ."
   },
   "repository": {

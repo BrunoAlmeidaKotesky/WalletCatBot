@@ -1,11 +1,9 @@
 import * as Discord from 'discord.js';
-import EmbedCommand from 'commands/uinfo';
+import { CommandContext } from './../CommandsCtx';
 
-export interface IBotCommand {
-  help(string:string);
-  isCommand: (command: string)=> boolean;
-  runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): void;
-}
-export  interface IConstructorCommand {
- new (command: string): IBotCommand;
+export interface ICommand {
+  readonly commandNames: string[];
+  run(parsedUserCommand: CommandContext): Promise<void>;
+  getHelpMessage(commandPrefix: string): string;
+  hasPermissionToRun(parsedUserCommand: CommandContext): boolean;
 }

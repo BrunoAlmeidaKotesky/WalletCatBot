@@ -1,14 +1,22 @@
+import { CommandContext } from './../CommandsCtx';
+import { ICommand } from './../typings/interfaces';
 import * as Discord from 'discord.js';
-import { Message } from 'discord.js';
-import BaseClass from '../baseClass';
 
-export default class EmbedCommand extends BaseClass {
+export class EmbedCommand implements ICommand{
+        public commandNames = ["uinfo", "myinfo"];
 
-        constructor(){ super("uinfo");}
-        runCommand(args: string[], message: Message, client: Discord.Client): void {
+        getHelpMessage(commandPrefix: string): string {
+          return `Modo de utilização: ${commandPrefix}uinfo
+                  Traz alguns detalhes da sobre a sua conta.`;
+        }
+      
+        hasPermissionToRun(parsedUserCommand: CommandContext): boolean {
+          return true;
+        }
+        async run({message, args, command}: CommandContext): Promise<void> {
                 let container = new Discord.RichEmbed()
                 .setAuthor(message.author.username)
-                .setDescription("Informações sobre o usuário.")
+                .setDescription("**Informações sobre o usuário.**")
                 .setColor("#fff")
                 .addField("Nome de usuário: ", `${message.author.username}#${message.author.discriminator}`)
                 .addField("ID: ", `${message.author.id}`)
