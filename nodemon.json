@@ -7,7 +7,7 @@
       "yarn.lock"
     ],
     "execMap": {
-      "ts": "node --require ts-node/register src/main.ts"
+      "ts": "node --require ts-node/register src/index.ts"
     },
     "ext": "js,json,ts"  
   }
