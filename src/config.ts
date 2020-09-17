@@ -1,4 +1,4 @@
-import { token } from "./token.json";
+import { token } from "./tokens.json";
 export type BotConfig = {
     token: string;
     prefix: string;
