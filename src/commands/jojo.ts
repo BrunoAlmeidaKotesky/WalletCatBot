@@ -22,6 +22,30 @@ export class Sexta implements ICommand {
             await message.channel.send('https://www.youtube.com/watch?v=Awu2sgBphco')
             message.delete(1700);
         }
+        else if(args[0] === 'segunda'){
+            await message.channel.send('https://imgur.com/AqQLMSS')
+            message.delete(1700);
+        }
+        else if(args[0] === 'terca'){
+            await message.channel.send('https://imgur.com/O8ZuSGq')
+            message.delete(1700);
+        }
+        else if(args[0] === 'quinta'){
+            await message.channel.send('https://imgur.com/80VIWaV')
+            message.delete(1700);
+        }
+        else if(args[0] === 'sabado'){
+            await message.channel.send('https://imgur.com/QazlB3f')
+            message.delete(1700);
+        }
+        else if(args[0] === 'domingo'){
+            await message.channel.send('https://imgur.com/ZVz5Ucq')
+            message.delete(1700);
+        }
+        else if(args[0] === 'dia4'){
+            await message.channel.send('https://imgur.com/VKsT1zs')
+            message.delete(1700);
+        }
         else {
              message.channel.send('Seguinte o adm n quis programar isso blz! usa +jojo sexta ou +jojo quarta ou +jojo muie')
              message.delete(1700);
