@@ -1,5 +1,2 @@
 #ignore
 node_modules
-src/token.json
-token.json
-package-lock.json
