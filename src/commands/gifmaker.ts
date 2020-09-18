@@ -10,7 +10,7 @@ export class GifMaker implements ICommand {
 
         let sentText = args.join();
         let lettersArray = [...sentText].filter(s => s !== ',');
-        if(lettersArray.length <= 30){
+        if(lettersArray.length <= 15){
             let gifImages = lettersArray.map(l => {
                 return LetterGifs.find(p => p.letter.toLocaleUpperCase() === l.toLocaleUpperCase());
             });
@@ -20,7 +20,7 @@ export class GifMaker implements ICommand {
                   message.channel.send(gif.gifUrl)
             }
         }
-        else message.channel.send('Sua mensagem possui mais de 30 caracteres, isso ocorre para evitar spam.')
+        else message.channel.send('Sua mensagem possui mais de 15 caracteres, isso ocorre para evitar spam.')
 
     }
 

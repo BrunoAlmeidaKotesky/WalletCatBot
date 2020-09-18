@@ -3,8 +3,7 @@ import { ICommand } from "./typings/interfaces";
 import { CommandContext } from "./CommandsCtx";
 import { reactor } from "./commands/reactor";
 import { HelpCommand } from "./commands/helper";
-import {EmbedCommand , Shutdown, Sexta} from './commands/index';
-import { GifMaker } from './commands/gifmaker';
+import {EmbedCommand , Shutdown, Sexta, GifMaker} from './commands/index';
 
 export class CommandHandler {
   private commands: ICommand[];

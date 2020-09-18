@@ -1,4 +1,3 @@
-import { token } from "./tokens.json";
 export type BotConfig = {
     token: string;
     prefix: string;
@@ -6,7 +5,7 @@ export type BotConfig = {
   }
   
   export let config: BotConfig = {
-    token: token,
+    token: process.env.TOKEN,
     prefix: "+",
     enableReactions: true
   }
