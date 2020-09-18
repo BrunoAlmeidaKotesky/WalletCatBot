@@ -21,7 +21,9 @@ export function applyMessages(client: Client){
     const segunda = applyJob('Pqp, hoje tem brunesco de novo', 'https://imgur.com/AqQLMSS', '0 0 11 * * 1', client);
     const terca = applyJob('Bora estuda!', 'https://imgur.com/O8ZuSGq', '0 0 11 * * 2', client);
     const quarta = applyJob('ZAPZAPZAPZAP', 'https://imgur.com/TkSbO7U.jpg', '0 0 11 * * 3', client); 
+    const dia4 = applyJob('Hoje é dia de azar', 'https://imgur.com/VKsT1zs', '0 0 11 4 * *', client);
 
+    dia4.start();
     quarta.start();
     terca.start();
     segunda.start();
