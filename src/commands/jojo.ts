@@ -19,41 +19,41 @@ export class Sexta implements ICommand {
             message.delete(1700);
         }
         else if(args[0] === 'festa'){
-            await message.channel.send('https://www.youtube.com/watch?v=Awu2sgBphco')
+            await message.channel.send('Bora marca essa porra?', {files: ['https://www.youtube.com/watch?v=Awu2sgBphco']})
             message.delete(1700);
         }
         else if(args[0] === 'segunda'){
-            await message.channel.send('https://imgur.com/AqQLMSS')
+            await message.channel.send('Pqp, hoje tem brunesco de novo', {files: ['https://imgur.com/AqQLMSS.jpg']})
             message.delete(1700);
         }
         else if(args[0] === 'terca'){
-            await message.channel.send('https://imgur.com/O8ZuSGq')
+            await message.channel.send('Bora estuda!', {files: ['https://imgur.com/O8ZuSGq.jpg']})
             message.delete(1700);
         }
         else if(args[0] === 'quinta'){
-            await message.channel.send('https://imgur.com/80VIWaV')
+            await message.channel.send('Quase sexta...', {files: ['https://imgur.com/80VIWaV.jpg']})
             message.delete(1700);
         }
         else if(args[0] === 'sabado'){
-            await message.channel.send('https://imgur.com/QazlB3f')
+            await message.channel.send('Hmm... café quentinho...', {files:['https://imgur.com/QazlB3f']})
             message.delete(1700);
         }
         else if(args[0] === 'domingo'){
-            await message.channel.send('https://imgur.com/ZVz5Ucq')
+            await message.channel.send('Domingão nada muda, é almoço com a familía!', {files: ['https://imgur.com/ZVz5Ucq.jpg']})
             message.delete(1700);
         }
         else if(args[0] === 'dia4'){
-            await message.channel.send('https://imgur.com/VKsT1zs')
+            await message.channel.send('Faz isso não mano, da azar.', {files: ['https://imgur.com/VKsT1zs.jpg']})
             message.delete(1700);
         }
         else {
-             message.channel.send('Seguinte o adm n quis programar isso blz! usa +jojo sexta ou +jojo quarta ou +jojo muie')
+             message.channel.send('Seguinte o adm n quis programar isso blz! usa +jojo <segunda,terca,quarta,quinta,sexta,sabado,domingo,dia,festa,muie>')
              message.delete(1700);
         }
     }
 
     getHelpMessage(commandPrefix: string): string {
-          return `Modo de uso: +jojo [muie, quarta, sexta, festa],
+          return `Modo de uso: +jojo [muie, segunda, terca, quarta, quinta, sexta, sabado, domingo, festa, dia4],
                   Retorna uma imagem da jojofeira, pqp q util`; 
         }
       
