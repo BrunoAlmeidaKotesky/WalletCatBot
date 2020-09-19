@@ -35,7 +35,7 @@ export class Sexta implements ICommand {
             message.delete(1700);
         }
         else if(args[0] === 'sabado'){
-            await message.channel.send('Hmm... café quentinho...', {files:['https://imgur.com/QazlB3f']})
+            await message.channel.send('Hmm... café quentinho...', {files:['https://imgur.com/QazlB3f.jpg']})
             message.delete(1700);
         }
         else if(args[0] === 'domingo'){
