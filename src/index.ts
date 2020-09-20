@@ -34,4 +34,4 @@ client.on("message", (message: Message) => {
   monkeyMessage(message);
 });
 
-client.login('NTk4NjE3ODU0MjM2OTUwNTQw.XSZQUg.2-fX38_Wu98Dj3WgF-hBrSypAhk');
+client.login(process.env.TOKEN);
