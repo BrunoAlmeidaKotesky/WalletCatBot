@@ -2,6 +2,7 @@ import { config, BotConfig } from './config';
 import { Message, Client, TextChannel, MessageAttachment, Attachment } from "discord.js";
 import { CommandHandler } from "./CommandHandler";
 import { applyMessages } from './commands/dailyMessages';
+import {join} from 'path';
 
 
 function monkeyMessage(message: Message){
@@ -9,10 +10,9 @@ function monkeyMessage(message: Message){
     let musicChannel = client.channels.find(c => c.id === '720042446003634207');
     if(musicChannel){
      let randomGif = Math.floor(Math.random() * 10) + 1;
-     if(process.env.TOKEN){
-      let attachment = new Attachment(`app\\src\\resources\\guitar${randomGif}.gif`);
-      (musicChannel as TextChannel).send(attachment);
-     }
+     const gifPath = join(__dirname, 'resources', `guitar${randomGif}.gif`);
+     let attachment = new Attachment(gifPath);
+     (musicChannel as TextChannel).send(attachment);
     }
  }
 }
@@ -34,4 +34,4 @@ client.on("message", (message: Message) => {
   monkeyMessage(message);
 });
 
-client.login(process.env.TOKEN);
+client.login('NTk4NjE3ODU0MjM2OTUwNTQw.XSZQUg.2-fX38_Wu98Dj3WgF-hBrSypAhk');
