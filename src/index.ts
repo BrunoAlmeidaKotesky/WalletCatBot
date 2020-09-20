@@ -9,8 +9,10 @@ function monkeyMessage(message: Message){
     let musicChannel = client.channels.find(c => c.id === '720042446003634207');
     if(musicChannel){
      let randomGif = Math.floor(Math.random() * 10) + 1;
-     let attachment = new Attachment(`src\\resources\\guitar${randomGif}.gif`);
-     (musicChannel as TextChannel).send(attachment);
+     if(process.env.TOKEN){
+      let attachment = new Attachment(`app\\src\\resources\\guitar${randomGif}.gif`);
+      (musicChannel as TextChannel).send(attachment);
+     }
     }
  }
 }
