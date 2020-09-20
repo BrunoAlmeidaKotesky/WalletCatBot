@@ -10,7 +10,7 @@ function monkeyMessage(message: Message){
     let musicChannel = client.channels.find(c => c.id === '720042446003634207');
     if(musicChannel){
      let randomGif = Math.floor(Math.random() * 10) + 1;
-     const gifPath = join(__dirname, 'resources', `guitar${randomGif}.gif`);
+     const gifPath = join(__dirname, 'src', 'resources', `guitar${randomGif}.gif`);
      let attachment = new Attachment(gifPath);
      (musicChannel as TextChannel).send(attachment);
     }
