@@ -112,3 +112,9 @@ export const LetterGifs:LetterGif[] = [
         letter: null
     }
 ]
+
+export const jojoGirls: string[] = ['https://i.imgur.com/UFs8meJ.png', 'https://i.imgur.com/hfOFnPE.png', 'https://i.imgur.com/9YZTxFg.png', 'https://i.imgur.com/mTBfDrL.png', 'https://i.imgur.com/M6mdU5E.png',
+                                    'https://i.imgur.com/Mj1zyRi.png', 'https://i.imgur.com/Jzz8dfN.png', 'https://i.imgur.com/61tL7zQ.png', 'https://i.imgur.com/dFWNNUX.png', 'https://i.imgur.com/OXpFhyz.png',
+                                     'https://i.imgur.com/KTDkEgm.png', 'https://i.imgur.com/ItQkNGe.png', 'https://i.imgur.com/adE5AG9.png', 'https://i.imgur.com/kO7osBb.png', 'https://i.imgur.com/XnbPYTu.png',
+                                     'https://i.imgur.com/ys1Sq5H.png', 'https://i.imgur.com/nedg4KJ.png', 'https://i.imgur.com/UMdu3Zj.png', 'https://i.imgur.com/6WQstwc.png', 'https://i.imgur.com/OyDGfTx.png',
+                                     'https://i.imgur.com/CkmUqpl.png', 'https://i.imgur.com/0LazSIx.jpg'];

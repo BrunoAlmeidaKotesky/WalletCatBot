@@ -2,7 +2,7 @@ import { CommandContext } from './../CommandsCtx';
 import { ICommand } from './../typings/interfaces';
 import * as Discord from 'discord.js';
 
-export class EmbedCommand implements ICommand{
+export class EmbedCommand implements ICommand {
         public commandNames = ["uinfo", "myinfo"];
 
         getHelpMessage(commandPrefix: string): string {

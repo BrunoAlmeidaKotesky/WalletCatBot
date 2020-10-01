@@ -1,4 +1,5 @@
 import { config, BotConfig } from './config';
+require('dotenv').config()
 import { Message, Client, TextChannel, MessageAttachment, Attachment } from "discord.js";
 import { CommandHandler } from "./CommandHandler";
 import { applyMessages } from './commands/dailyMessages';
@@ -25,6 +26,8 @@ const client = new Client();
 client.on("ready", () => { 
   console.log('Bot ligado!')
   applyMessages(client);
+  const cha = client.channels.find(c => c.id === '203949437331046400');
+  (cha as TextChannel).send('Sim mano...')
 });
 
 client.on("error", e => console.error("Discord error: ", e));

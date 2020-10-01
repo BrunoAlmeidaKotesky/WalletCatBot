@@ -1,7 +1,9 @@
 import { CommandContext } from '../CommandsCtx';
 import { ICommand } from '../typings/interfaces';
+import { jojoGirls } from '../utils/constants';
+
 export class Sexta implements ICommand {
-    public commandNames = ["jojo"];
+    public commandNames = ["jojo"]; 
 
     async run({ args, message, command }: CommandContext): Promise<void> {
         if (!message.member.hasPermission("MANAGE_MESSAGES")) message.channel.send("Você não tem permissão para gerenciar mensagens.");
@@ -11,7 +13,7 @@ export class Sexta implements ICommand {
             message.delete(1700);
         }
         else if(args[0] === 'muie'){
-            await message.channel.send('O macho escroto passou vergonha manas', {files: ['https://imgur.com/mAfUchr.jpg']})
+            await message.channel.send('O macho escroto passou vergonha manas', {files: [jojoGirls[Math.floor(Math.random()*jojoGirls.length)]]})
             message.delete(1700);
         }
         else if(args[0] === 'quarta'){
@@ -29,6 +31,7 @@ export class Sexta implements ICommand {
         else if(args[0] === 'terca'){
             await message.channel.send('Bora estuda!', {files: ['https://imgur.com/O8ZuSGq.jpg']})
             message.delete(1700);
+            
         }
         else if(args[0] === 'quinta'){
             await message.channel.send('Quase sexta...', {files: ['https://imgur.com/80VIWaV.jpg']})
