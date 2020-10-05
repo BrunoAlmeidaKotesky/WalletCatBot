@@ -26,8 +26,7 @@ const client = new Client();
 client.on("ready", () => { 
   console.log('Bot ligado!')
   applyMessages(client);
-  const cha = client.channels.find(c => c.id === '203949437331046400');
-  (cha as TextChannel).send('Sim mano...')
+
 });
 
 client.on("error", e => console.error("Discord error: ", e));
