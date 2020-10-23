@@ -7,7 +7,10 @@
     "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
     "dev:debug": "nodemon --inspect src/index.ts",
     "build": "tsc -p .",
-    "serve": "node lib/index.js"
+    "serve": "node lib/index.js",
+    "database": "ts-node src/database/connection.ts",
+    "migrate:gen": ".\node_modules\\.bin\ts-node ./node_modules/typeorm/cli.js migration:generate -n MigrationName",
+    "migration:run": ".\node_modules\\.bin\ts-node ./node_modules/typeorm/cli.js migration:run"
   },
   "repository": {
     "type": "git",
@@ -22,17 +25,20 @@
   "dependencies": {
     "axios": "^0.19.0",
     "canvas": "^2.6.1",
+    "colors": "^1.4.0",
     "cron": "^1.8.2",
     "discord-anti-spam": "^2.0.0",
     "discord.js": "^11.6.4",
     "dotenv": "^8.2.0",
     "ms": "^2.1.2",
+    "mssql": "^6.2.3",
     "nodemon": "^1.19.1",
     "reflect-metadata": "^0.1.13",
     "request": "^2.88.0",
     "sucrase": "^3.11.0",
     "ts-node": "^8.5.4",
     "tslib": "^2.0.1",
+    "typeorm": "^0.2.28",
     "typescript": "^3.9.7"
   },
   "devDependencies": {

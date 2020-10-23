@@ -1,0 +1,20 @@
+{
+    "type": "mssql",
+    "host": "localhost",
+    "port": 1433,
+    "database": "walletcatdb",
+    "syncronize": true,
+    "username": "Wallet",
+    "password": "ugaugabuga",
+    "logging": true,
+    "entities": ["src/models/entity/*.ts"],
+    "migrations": ["src/migrations/*.ts"],
+    "subscribers": [
+        "src/subscriber/**/*.ts"
+    ],
+    "cli": {
+        "entitiesDir": "src/models/entity",
+        "migrationsDir": "src/migrations",
+        "subscribersDir": "src/subscriber"
+    }
+}

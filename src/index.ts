@@ -1,10 +1,10 @@
-import { config, BotConfig } from './config';
+import { config } from './config';
 require('dotenv').config()
-import { Message, Client, TextChannel, MessageAttachment, Attachment } from "discord.js";
+import { Message, Client, TextChannel, MessageAttachment, Attachment, Guild } from "discord.js";
 import { CommandHandler } from "./CommandHandler";
 import { applyMessages } from './commands/dailyMessages';
 import {join} from 'path';
-
+import { registerNewServer, connectToDatabase } from './database/databaseController';
 
 function monkeyMessage(message: Message){
   if(message.channel.id === '647661888854949899'){
@@ -18,16 +18,18 @@ function monkeyMessage(message: Message){
  }
 }
 
-console.log(process.env.TOKEN)
-
 const commandHandler = new CommandHandler(config.prefix);
 const client = new Client();
 
-client.on("ready", () => { 
-  console.log('Bot ligado!')
+client.on("ready", async () => {
+  await connectToDatabase();
+  await client.user.setActivity(`Atualmente ativo em ${client.guilds.size} serveridores`, {type: 'PLAYING'});
+  console.log('Bot ligado!');
   applyMessages(client);
 
 });
+
+client.on("guildCreate", async (guild) => await registerNewServer(guild));
 
 client.on("error", e => console.error("Discord error: ", e));
 
