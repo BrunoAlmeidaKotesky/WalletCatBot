@@ -35,12 +35,9 @@ export class SelectImage implements ICommand {
                     const allCommands = commands.map((v, idx)=> {
                         return {name: `${v?.messageTypeId?.customCommandName}_${idx + 1}`, url: v.imageUrl, file: v?.imageFile};
                     });
-                    const filter = (m: Message) => m.author.id === message.author.id;
                     const commandsNames = allCommands.map(n => n.name);
-                    const stringCommands = commandsNames.join(', ');
-                    const botMsg = await message.channel.send(`Há ${commands.length} comandos com este nome neste servidor, por favor selecione entre: \n${stringCommands}`);
-                    const userResponses = await botMsg.channel.awaitMessages(filter, { max: 1 });
-                    const userResponse = userResponses?.first()?.content;
+                    const stringCommands = commandsNames.join(', ');                   
+                    const userResponse = await this.getUserMessage(`Há ${commands.length} comandos com este nome neste servidor, por favor selecione entre: \n${stringCommands}`, message);
                     let counter = 0;
                     allCommands.forEach(c => {
                         if(c.name === userResponse) {
@@ -64,6 +61,14 @@ export class SelectImage implements ICommand {
         else message.channel.send('Você deve especificar um comando criado neste servidor');
         
 
+    }
+
+    private async getUserMessage(bMessage: string, message: Message){
+        const botMsg = await message.channel.send(bMessage);
+        const filter = (m: Message) => m.author.id === message.author.id;
+        const userResponses = await botMsg.channel.awaitMessages(filter, { max: 1 });
+        const userResponse = userResponses?.first()?.content;
+        return userResponse;
     }
 
     public getHelpMessage = (commandPrefix: string) => `${commandPrefix}image [nome_do_comando]`;

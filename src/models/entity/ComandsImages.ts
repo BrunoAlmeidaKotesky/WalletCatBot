@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm";
 import MessageType from './MessageType';
 import ServersList from './ServersList';
 
@@ -21,8 +21,10 @@ export default class CommandsImages {
     imageFile: Buffer;
 
     @ManyToOne(() => ServersList, (server: ServersList) => server.serverUUID)
+    @JoinColumn()
     serverID: ServersList;
 
     @ManyToOne(() => MessageType, (msgType: MessageType) => msgType.idMessageType)
+    @JoinColumn()
     messageTypeId: MessageType;
 }

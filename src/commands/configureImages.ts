@@ -5,7 +5,7 @@ import { ICommand } from '../typings/interfaces';
 import {ActionTypes, PossibileFileTypes} from '../typings/types';
 import {DirectCommandMsg} from '../models/DirectMessageImg';
 
-export class ImagesMessages implements ICommand {
+export class ImagesMessages implements ICommand { 
     public commandNames = ["config"];
 
     async run({ args, message, command }: CommandContext): Promise<void> {
@@ -33,7 +33,6 @@ export class ImagesMessages implements ICommand {
 
     private async verifyMessage(message: Message, type: ActionTypes, commandType: MessagesEnum, imageUrl?: string) {
         if (commandType) {
-            const res = this.verifyAttatchmentType(message, imageUrl);
             switch (commandType) {
                 case MessagesEnum.DETECTION: {
                     if (type === 'ADD') {
@@ -51,13 +50,20 @@ export class ImagesMessages implements ICommand {
                     }
                 }
                 case MessagesEnum.DIRECT: {
-                    if (type === 'ADD') {
-                        await this.insertImageToDb(message, res, commandType);
-                        break;
-                    }
-                    else {
-
-                    }
+                    switch(type) {
+                        case 'ADD': {
+                            const res = this.verifyAttatchmentType(message, imageUrl);
+                            await this.insertImageToDb(message, res, commandType);
+                            break;
+                        }
+                        case 'LIST': {
+                            
+                        }
+                        case 'REMOVE': {
+                            await this.removeImageFromDb(message, null, commandType);
+                            break;
+                        }
+                    } 
                 }
                 default: message.channel.send('Você deve escoler o tipo de comando: DIRECT, DETECT, DAILY');
             }
@@ -91,7 +97,11 @@ export class ImagesMessages implements ICommand {
         }
     }
 
-    private async removeImageFromDb(message: Message, file: PossibileFileTypes) {
+    private async removeImageFromDb(message: Message, file: PossibileFileTypes, type: MessagesEnum) {
+        if(type === MessagesEnum.DIRECT) {
+            const direct = new DirectCommandMsg(type, message, file);
+            await direct.removeDirectMsg();
+        }
     }
 
     private async insertImageToDb(message: Message, file: PossibileFileTypes, type: MessagesEnum) {        

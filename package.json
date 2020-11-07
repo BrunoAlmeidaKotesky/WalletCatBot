@@ -9,7 +9,7 @@
     "build": "tsc -p .",
     "serve": "node lib/index.js",
     "database": "ts-node src/database/connection.ts",
-    "migrate:gen": ".\node_modules\\.bin\ts-node ./node_modules/typeorm/cli.js migration:generate -n MigrationName",
+    "migrate:gen": ".\node_modules\\.bin\ts-node ./node_modules/typeorm/cli.js migration:generate -n NewMig",
     "migration:run": ".\node_modules\\.bin\ts-node ./node_modules/typeorm/cli.js migration:run"
   },
   "repository": {
