@@ -1,5 +1,5 @@
 import { CommandContext } from './../CommandsCtx';
-import { ICommand } from './../typings/interfaces';
+import { ICommand } from '../models/typings/interfaces';
 import * as Discord from 'discord.js';
 
 export class EmbedCommand implements ICommand {

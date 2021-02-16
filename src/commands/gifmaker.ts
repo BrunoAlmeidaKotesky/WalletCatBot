@@ -1,6 +1,6 @@
 import { LetterGifs } from '../utils/constants';
 import { CommandContext } from '../CommandsCtx';
-import { ICommand } from '../typings/interfaces';
+import { ICommand } from '../models/typings/interfaces';
 
 export class GifMaker implements ICommand {
     public commandNames = ["gif"];

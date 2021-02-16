@@ -5,7 +5,6 @@ import CommandsImages from './ComandsImages';
 export enum MessagesEnum {
     DAILY = 'DAILY',
     DIRECT = 'DIRECT',
-    DETECTION = 'DETECTION',
 }
 
 @Entity({name: 'MessageType'})

@@ -1,5 +1,5 @@
 import * as Discord from 'discord.js';
-import { CommandContext } from './../CommandsCtx';
+import { CommandContext } from '../../CommandsCtx';
 
 export interface ICommand {
   readonly commandNames: string[];

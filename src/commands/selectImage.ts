@@ -1,9 +1,10 @@
 import {Attachment, Message, TextChannel} from 'discord.js';
 import { CommandContext } from '../CommandsCtx';
-import { ICommand } from '../typings/interfaces';
+import { ICommand } from '../models/typings/interfaces';
 import {getConnection, In} from 'typeorm';
 import CommandsImages from '../models/entity/ComandsImages';
 import { blue } from 'colors';
+import DiscordHelper from 'utils/DiscordHelper';
 
 export class SelectImage implements ICommand {
     public commandNames = ["image"];
@@ -37,7 +38,7 @@ export class SelectImage implements ICommand {
                     });
                     const commandsNames = allCommands.map(n => n.name);
                     const stringCommands = commandsNames.join(', ');                   
-                    const userResponse = await this.getUserMessage(`Há ${commands.length} comandos com este nome neste servidor, por favor selecione entre: \n${stringCommands}`, message);
+                    const userResponse = await DiscordHelper.getUserMessage(`Há ${commands.length} comandos com este nome neste servidor, por favor selecione entre: \n${stringCommands}`, message.channel, message.author);
                     let counter = 0;
                     allCommands.forEach(c => {
                         if(c.name === userResponse) {
@@ -61,14 +62,6 @@ export class SelectImage implements ICommand {
         else message.channel.send('Você deve especificar um comando criado neste servidor');
         
 
-    }
-
-    private async getUserMessage(bMessage: string, message: Message){
-        const botMsg = await message.channel.send(bMessage);
-        const filter = (m: Message) => m.author.id === message.author.id;
-        const userResponses = await botMsg.channel.awaitMessages(filter, { max: 1 });
-        const userResponse = userResponses?.first()?.content;
-        return userResponse;
     }
 
     public getHelpMessage = (commandPrefix: string) => `${commandPrefix}image [nome_do_comando]`;

@@ -1,7 +1,6 @@
 import { Message } from "discord.js";
-import { ICommand } from "./typings/interfaces";
+import { ICommand } from "./models/typings/interfaces";
 import { CommandContext } from "./CommandsCtx";
-import { reactor } from "./commands/reactor";
 import { HelpCommand } from "./commands/helper";
 import {EmbedCommand , Shutdown, Sexta, GifMaker, MemeGenerator, ImagesMessages, SelectImage} from './commands/index';
 
@@ -25,16 +24,13 @@ export class CommandHandler {
 
     if (!matchedCommands) {
       await message.reply(`Comando desconhecido. Tente utilizar ${this.prefix}help`);
-      await reactor.failure(message);
     } 
     else {
       try {
         await matchedCommands.run(commandContext);
-        reactor.success(message);
       }
       catch(r) {
         console.log(r);
-        reactor.failure(message);
       }
     }
   }

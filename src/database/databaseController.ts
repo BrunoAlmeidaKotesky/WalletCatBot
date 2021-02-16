@@ -21,7 +21,7 @@ export async function connectToDatabase(){
 }
 
 export async function registerNewServer(guild: Guild) {
-  const con = await getConnection('walletcon');
+  const con = getConnection('walletcon');
   const serverUUID  = guild.id;
   const serverList = new ServersList();
   const actualServer = await con.getRepository(ServersList).findOne({where: {serverUUID}});
@@ -34,4 +34,4 @@ export async function registerNewServer(guild: Guild) {
       console.log(green(`Servidor ${id} cadastrado com sucesso!`));
     }
   }
-};
+}

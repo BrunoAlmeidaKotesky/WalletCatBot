@@ -1,7 +1,7 @@
 import { createCanvas, Image, loadImage, Canvas } from 'canvas';
 import { Attachment } from 'discord.js';
 import { CommandContext } from '../CommandsCtx';
-import { ICommand } from '../typings/interfaces';
+import { ICommand } from '../models/typings/interfaces';
 
 let canvas = createCanvas(600, 600);
 let ctx = canvas.getContext('2d');

@@ -1,4 +1,4 @@
-import { ICommand } from '../typings/interfaces';
+import { ICommand } from '../models/typings/interfaces';
 import { CommandContext } from '../CommandsCtx';
 
 export class Shutdown implements ICommand {

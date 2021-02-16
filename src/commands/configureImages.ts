@@ -1,9 +1,10 @@
 import { Message } from 'discord.js';
 import{ MessagesEnum } from '../models/entity/MessageType';
 import { CommandContext } from '../CommandsCtx';
-import { ICommand } from '../typings/interfaces';
-import {ActionTypes, PossibileFileTypes} from '../typings/types';
-import {DirectCommandMsg} from '../models/DirectMessageImg';
+import { ICommand } from '../models/typings/interfaces';
+import {ActionTypes, PossibileFileTypes} from '../models/typings/types';
+import BaseImageRepository from '../services/BaseImageService';
+import DirectImageService from 'services/DirectImageService';
 
 export class ImagesMessages implements ICommand { 
     public commandNames = ["config"];
@@ -23,6 +24,10 @@ export class ImagesMessages implements ICommand {
                     await this.verifyMessage(message, 'REMOVE', commandType, imageUrl);
                     break;
                 }
+                case 'LIST': {
+                    await this.verifyMessage(message, 'LIST', commandType, imageUrl);
+                    break;
+                }
                 default: message.channel.send('Você deve escolher se vai adicionar ou remover uma imagem, ADD/REMOVE');
             }
         }
@@ -34,21 +39,6 @@ export class ImagesMessages implements ICommand {
     private async verifyMessage(message: Message, type: ActionTypes, commandType: MessagesEnum, imageUrl?: string) {
         if (commandType) {
             switch (commandType) {
-                case MessagesEnum.DETECTION: {
-                    if (type === 'ADD') {
-                    }
-                    else {
-
-                    }
-                }
-                case MessagesEnum.DAILY: {
-                    if (type == 'ADD') {
-
-                    }
-                    else {
-
-                    }
-                }
                 case MessagesEnum.DIRECT: {
                     switch(type) {
                         case 'ADD': {
@@ -57,13 +47,17 @@ export class ImagesMessages implements ICommand {
                             break;
                         }
                         case 'LIST': {
-                            
+                            await this.listImagesFromDb(message, commandType);
+                            break;
                         }
                         case 'REMOVE': {
                             await this.removeImageFromDb(message, null, commandType);
                             break;
                         }
                     } 
+                }
+                case MessagesEnum.DAILY: {
+
                 }
                 default: message.channel.send('Você deve escoler o tipo de comando: DIRECT, DETECT, DAILY');
             }
@@ -99,15 +93,22 @@ export class ImagesMessages implements ICommand {
 
     private async removeImageFromDb(message: Message, file: PossibileFileTypes, type: MessagesEnum) {
         if(type === MessagesEnum.DIRECT) {
-            const direct = new DirectCommandMsg(type, message, file);
-            await direct.removeDirectMsg();
+            const direct = new BaseImageRepository(new DirectImageService(message, file));
+            await direct.removeImage();
         }
     }
 
     private async insertImageToDb(message: Message, file: PossibileFileTypes, type: MessagesEnum) {        
         if (type === MessagesEnum.DIRECT) {
-            const directInsert = new DirectCommandMsg(type, message, file);
-            await directInsert.insertDirectMessage();
+            const directInsert = new BaseImageRepository(new DirectImageService(message, file));
+            await directInsert.addImage();
+        }
+    }
+
+    private async listImagesFromDb(message: Message, type: MessagesEnum) {
+        if(type === MessagesEnum.DIRECT) {
+            const directInsert = new BaseImageRepository(new DirectImageService(message, null));
+            await directInsert.listMessages();
         }
     }
 

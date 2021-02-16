@@ -1,4 +1,4 @@
-import { ICommand } from "../typings/interfaces";
+import { ICommand } from "../models/typings/interfaces";
 import { CommandContext } from "../CommandsCtx";
 
 export class HelpCommand implements ICommand {
@@ -32,9 +32,7 @@ export class HelpCommand implements ICommand {
     return `${command.getHelpMessage(context.commandPrefix)}\nAlias: ${command.commandNames.join(", ")}`
   }
 
-  hasPermissionToRun(commandContext: CommandContext): boolean {
-    return true;
-  }
-
-  getHelpMessage = (commandPrefix: string) => "Você já esta o utilizando❗";
+  hasPermissionToRun = (commandContext: CommandContext) => true;
+  getHelpMessage = (commandPrefix: string) => null;
+  
 }
