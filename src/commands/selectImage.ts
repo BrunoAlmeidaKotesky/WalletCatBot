@@ -1,27 +1,29 @@
-import {Attachment, Message, TextChannel} from 'discord.js';
+import {Attachment, TextChannel} from 'discord.js';
 import { CommandContext } from '../CommandsCtx';
 import { ICommand } from '../models/typings/interfaces';
-import {getConnection, In} from 'typeorm';
+import {getConnection} from 'typeorm';
 import CommandsImages from '../models/entity/ComandsImages';
 import { blue } from 'colors';
 import DiscordHelper from 'utils/DiscordHelper';
+import { CommandImageRepository } from 'repositories/CommandImageRepository';
 
 export class SelectImage implements ICommand {
     public commandNames = ["image"];
+    private commandImageRepository: CommandImageRepository;
+
+    constructor() {
+        this.commandImageRepository = getConnection('walletcon').getCustomRepository(CommandImageRepository);
+    }
 
     public async run({ args, message, command }: CommandContext): Promise<void> {
         const customCommand = args[0];
         if(customCommand){
-            const con = getConnection('walletcon');
             const serverUUID = message.guild.id;
-            const commands = await con.getRepository(CommandsImages)
-            .createQueryBuilder('cd')
-            .innerJoinAndSelect('cd.serverID', 'sv')
-            .innerJoinAndSelect('cd.messageTypeId', 'ty')
-            .where(`ty.customCommandName IN ('${customCommand}') and sv.serverUUID = ${serverUUID}`).getMany();  
+            const query = `ty.customCommandName IN ('${customCommand}') and sv.serverUUID = ${serverUUID}`;
+            const commands = await this.commandImageRepository.selectImage(query, 'MANY') as CommandsImages[];  
             console.log(blue('Query'), commands);
 
-            if(commands){
+            if(commands) {
                 if(commands.length === 0) 
                     message.channel.send("Não há nenhum comando " + customCommand + "cadastrado neste servidor");
                 else if(commands.length  === 1) {
@@ -60,8 +62,6 @@ export class SelectImage implements ICommand {
         
         }
         else message.channel.send('Você deve especificar um comando criado neste servidor');
-        
-
     }
 
     public getHelpMessage = (commandPrefix: string) => `${commandPrefix}image [nome_do_comando]`;
